@@ -89,7 +89,7 @@ Do you want to perform these actions?
 
 - Wait a couple of minutes for TFE to become online
 
-- Access the TFE environment at the following URL: https://podmanes1.daniela.sbx.hashidemos.io
+- Access the TFE environment at the following URL: https://podmanaa.daniela.sbx.hashidemos.io
 
 - Login to TFE UI with the username and password setup in the `variables.auto.tfvars` file and create your organization
 
