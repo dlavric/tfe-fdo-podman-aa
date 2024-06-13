@@ -19,6 +19,6 @@ output "ssh_bastion" {
 
 output "ssh_connect" {
   value = [
-    for k in data.aws_instances.bastion.private_ips : "ssh -J ec2-user@${var.tfe_hostname} ec2-user@${k}"
+    for k in data.aws_instances.bastion.private_ips : "ssh -J ec2-user@${aws_eip.eip.public_ip} ec2-user@${k}"
   ]
 }
