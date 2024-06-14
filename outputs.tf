@@ -14,7 +14,7 @@ data "aws_instances" "bastion" {
 }
 
 output "ssh_bastion" {
-    value = "ssh ec2-user@${aws_eip.eip.public_ip}"
+  value = "ssh ec2-user@${aws_eip.eip.public_ip}"
 }
 
 output "ssh_connect" {

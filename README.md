@@ -28,24 +28,26 @@ cd tfe-fdo-podman-aa
 
 - Create a file `variables.auto.tfvars` with the following content
 ```hcl
-aws_region     = "eu-west-3"
-tfe_version    = "v202405-1"
-tfe_hostname   = "podmanaa.daniela.sbx.hashidemos.io"
-tfe_subdomain  = "podmanaa"
-tfe_domain     = "daniela.sbx.hashidemos.io"
-email          = "yourname@email.com"
-username       = "dlavric"
-password       = "DanielaLavric"
-bucket         = "daniela-podmanaa-bucket1"
-key_pair       = "daniela-podmanaa-key"
-enc_password   = "encpassword"
-license_value  = "XY..."
-db_identifier  = "daniela-db-podman"
-db_name        = "danieladb"
-db_username    = "postgres"
-db_password    = "dbpassword"
-prefix         = "daniela"
-storage_bucket = "daniela-podmanaa-storage"
+aws_region       = "eu-west-3"
+tfe_version      = "v202405-1"
+tfe_hostname     = "podmanaa.daniela.sbx.hashidemos.io"
+tfe_subdomain    = "podmanaa"
+tfe_domain       = "daniela.sbx.hashidemos.io"
+email            = "yourname@email.com"
+username         = "dlavric"
+password         = "DanielaLavric"
+bucket           = "daniela-podmanaa-bucket1"
+key_pair         = "daniela-podmanaa-key"
+enc_password     = "encpassword"
+license_value    = "XY..."
+db_identifier    = "daniela-db-podman"
+db_name          = "danieladb"
+db_username      = "postgres"
+db_password      = "dbpassword"
+prefix           = "daniela"
+storage_bucket   = "daniela-podmanaa-storage"
+desired_capacity = 1
+max_size         = 1
 ```
 
 - Export your AWS environment variables

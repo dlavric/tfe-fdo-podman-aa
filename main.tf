@@ -150,7 +150,7 @@ resource "aws_security_group" "securitygp" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    ingress {
+  ingress {
     description = "db-access"
     from_port   = 5432
     to_port     = 5432
@@ -158,7 +158,7 @@ resource "aws_security_group" "securitygp" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    ingress {
+  ingress {
     description = "redis-access"
     from_port   = 6379
     to_port     = 6379
@@ -467,22 +467,22 @@ resource "aws_launch_template" "tfe_launchtemp" {
   }
 
   user_data = base64encode(templatefile("${path.module}/fdo_ent.yaml", {
-    tfe_version      = var.tfe_version,
-    tfe_hostname     = var.tfe_hostname,
-    enc_password     = var.enc_password,
-    email            = var.email,
-    username         = var.username,
-    password         = var.password,
-    bucket           = var.bucket,
-    license_value    = var.license_value
-    db_username      = var.db_username,
-    db_password      = var.db_password,
-    db_host          = aws_db_instance.tfe_db.endpoint,
-    db_name          = var.db_name,
-    storage_bucket   = var.storage_bucket,
-    aws_region       = var.aws_region,
-    redis_address    = lookup(aws_elasticache_cluster.tfe_redis.cache_nodes[0], "address", "Redis address not found"),
-    redis_port       = aws_elasticache_cluster.tfe_redis.port
+    tfe_version    = var.tfe_version,
+    tfe_hostname   = var.tfe_hostname,
+    enc_password   = var.enc_password,
+    email          = var.email,
+    username       = var.username,
+    password       = var.password,
+    bucket         = var.bucket,
+    license_value  = var.license_value
+    db_username    = var.db_username,
+    db_password    = var.db_password,
+    db_host        = aws_db_instance.tfe_db.endpoint,
+    db_name        = var.db_name,
+    storage_bucket = var.storage_bucket,
+    aws_region     = var.aws_region,
+    redis_address  = lookup(aws_elasticache_cluster.tfe_redis.cache_nodes[0], "address", "Redis address not found"),
+    redis_port     = aws_elasticache_cluster.tfe_redis.port
 
   }))
 

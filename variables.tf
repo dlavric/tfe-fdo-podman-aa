@@ -68,3 +68,11 @@ variable "db_username" {
 variable "db_password" {
   description = "The DB password"
 }
+
+variable "desired_capacity" {
+  description = "Desired capacity for the ASG"
+}
+
+variable "max_size" {
+  description = "Maximum number of nodes"
+}
