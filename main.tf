@@ -359,7 +359,7 @@ resource "aws_db_instance" "tfe_db" {
   identifier             = var.db_identifier
   db_name                = var.db_name
   engine                 = "postgres"
-  engine_version         = "14.9"
+  engine_version         = "14.10"
   instance_class         = "db.m5.xlarge"
   username               = var.db_username
   password               = var.db_password
@@ -495,8 +495,8 @@ resource "aws_launch_template" "tfe_launchtemp" {
 # Create ASG Group with a Launch Template. The ASG will create the EC2 instances
 resource "aws_autoscaling_group" "tfe_asg" {
   #availability_zones     = ["${var.aws_region}"]
-  desired_capacity       = 2
-  max_size               = 2
+  desired_capacity       = var.desired_capacity
+  max_size               = var.max_size
   min_size               = 1
   vpc_zone_identifier    = [aws_subnet.privatesub.id]
   target_group_arns      = [aws_lb_target_group.tfe_lbtarget.arn]

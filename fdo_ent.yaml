@@ -8,11 +8,10 @@ write_files:
           app: "terraform-enterprise"
         name: "terraform-enterprise"
       spec:
-          restartPolicy: "Never"
           containers:
           - env:
             - name: "TFE_OPERATIONAL_MODE"
-              value: "disk"
+              value: "active-active"
             - name: "TFE_LICENSE"
               value: "${license_value}"
             - name: "TFE_HOSTNAME"
@@ -76,8 +75,8 @@ write_files:
               hostPort: 80
             - containerPort: 8443
               hostPort: 443
-            - containerPort: 9090
-              hostPort: 9090
+            - containerPort: 8201
+              hostPort: 8201
             securityContext:
               capabilities:
                 add:
@@ -94,12 +93,11 @@ write_files:
               name: "run"
             - mountPath: "/tmp"
               name: "tmp"
-            - mountPath: "/var/lib/terraform-enterprise"
-              name: "data"
             - mountPath: "/run/docker.sock"
               name: "docker-sock"
             - mountPath: "/var/cache/tfe-task-worker/terraform"
               name: "terraform-enterprise_terraform-enterprise-cache-pvc"
+          restartPolicy: "Never"    
           volumes:
           - hostPath:
               path: "/opt/tfe-fdo/certs"
@@ -115,9 +113,8 @@ write_files:
               medium: "Memory"
             name: "tmp"
           - hostPath:
-              path: "/opt/tfe-fdo/data"
-              type: "Directory"
-            name: "data"
+              path: "/var/run/docker.sock"
+              type: "File"
           - hostPath:
               path: "/var/run/docker.sock"
               type: "File"
