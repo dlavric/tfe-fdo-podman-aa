@@ -249,7 +249,7 @@ resource "aws_eip" "nateip" {
 # Create Bastion Server/Jump host
 resource "aws_instance" "bastion" {
   ami                  = "ami-0bd23a7080ec75f4d" # eu-west-3 redhat machine 
-  instance_type        = "m5.xlarge"
+  instance_type        = "t2.medium"
   iam_instance_profile = aws_iam_instance_profile.profile.name
 
   credit_specification {
